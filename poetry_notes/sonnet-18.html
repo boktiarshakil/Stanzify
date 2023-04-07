@@ -1,71 +1,123 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Study Notes</title>
+	<title>Stanzify</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<style>
-		.popup {
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+		}
+
+		header {
+			background-color: #333;
+			color: white;
+			padding: 20px;
+			text-align: center;
+		}
+
+		h1 {
+			margin: 0;
+		}
+
+		.container {
+			padding: 20px;
+			max-width: 800px;
+			margin: auto;
+		}
+
+		ul {
+			list-style-type: none;
+			padding: 0;
+			margin: 0;
+		}
+
+		li a {
+			display: block;
+			padding: 10px;
+			background-color: #f2f2f2;
+			border-radius: 5px;
+			color: #333;
+			text-decoration: none;
+			margin-bottom: 10px;
+		}
+
+		li a:hover {
+			background-color: #ddd;
+		}
+
+		.modal {
 			display: none;
 			position: fixed;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			width: 80%;
-			height: 80%;
-			background-color: white;
-			border: 2px solid black;
+			z-index: 1;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			overflow: auto;
+			background-color: rgb(0,0,0);
+			background-color: rgba(0,0,0,0.4);
+		}
+
+		.modal-content {
+			background-color: #fefefe;
+			margin: 10% auto;
 			padding: 20px;
-			overflow-y: auto;
+			border: 1px solid #888;
+			width: 80%;
 		}
-		
-		.popup h2 {
-			margin-top: 0;
-		}
-		
-		.popup-close {
+
+		.close {
+			color: #aaa;
 			float: right;
+			font-size: 28px;
+			font-weight: bold;
+		}
+
+		.close:hover,
+		.close:focus {
+			color: black;
+			text-decoration: none;
 			cursor: pointer;
 		}
+
 	</style>
 </head>
 <body>
+	<header>
+		<h1>Stanzify</h1>
+		<p>Where poetry comes to life.</p>
+	</header>
 
-<button onclick="window.location.href='../index.html'">Back to Home</button>
+	<div class="container">
+		<ul id="poem-list">
+			<li><a href="poetry_notes/sonnet-18.html">Sonnet 18</a></li>
+			<li><a href="poetry_notes/index.html">Poem</a></li>
+			<li><a href="poetry_notes/index.html">Poem</a></li>
+			<li><a href="poetry_notes/index.html">Poem</a></li>
+			<li><a href="poetry_notes/index.html">Poem</a></li>
+			<li><a href="poetry_notes/index.html">Poem</a></li>
+			<li><a href="poetry_notes/index.html">Poem</a></li>
+			<li><a href="poetry_notes/index.html">Poem</a></li>
+			<li><a href="poetry_notes/index.html">Poem</a></li>
+			<li><a href="poetry_notes/index.html">Poem</a></li>
+			<li><a href="poetry_notes/index.html">Poem</a></li>
+			<li><a href="poetry_notes/index.html">Poem</a></li>
+			<li><a href="poetry_notes/index.html">Poem</a></li>
+		</ul>
+	</div>
 
-<h1>Poem Title</h1>
+	<div id="myModal" class="modal">
+		<div class="modal-content">
+			<span class="close">&times;</span>
+			<h2 id="poem-title"></h2>
+			<p id="poem-content"></p>
+		</div>
+	</div>
 
-<p>Line of poem <a href="#popup">[Explanation]</a></p>
-
-<div id="popup" class="popup">
-	<h2>Line of poem</h2>
-	<p>Word notes:</p>
-	<ul>
-		<li>Rough: harsh, violent.</li>
-		<li>Winds: moving air, often with considerable force.</li>
-		<li>Shake: to move or cause to move with short, quick movements.</li>
-		<li>Darling: cherished, beloved.</li>
-		<li>Buds: small, undeveloped flowers or leaves.</li>
-		<li>May: the month of May, typically associated with spring and new growth.</li>
-	</ul>
-	<p>Paraphrase:</p>
-	<p>Strong winds can damage the beloved buds of May.</p>
-	<p>Explanation:</p>
-	<p>This line uses a metaphor to suggest that the beauty of a summer's day is fragile and fleeting. The "darling buds of May" represent the delicate and beloved parts of nature that are vulnerable to damage from the "rough winds" of life. The tone is somewhat melancholy, as the speaker is acknowledging the transience of beauty and the inevitability of change. The use of the word "darling" also suggests a sense of affection and tenderness, which adds to the emotional impact of the metaphor.</p>
-	<p>Historical/cultural context:</p>
-	<p>William Shakespeare's sonnet 18 was published in 1609 and is one of his most famous sonnets. It is also known as "Shall I compare thee to a summer's day?" and is addressed to a young man, praising his beauty and comparing him to the beauty of a summer's day. The sonnet form was popular in Shakespeare's time and often used to explore themes of love, beauty, and mortality.</p>
-	<p><span class="popup-close">[Close]</span></p>
-</div>
-
-<script>
-	var popup = document.getElementById("popup");
-	var link = document.getElementsByTagName("a")[0];
-	var close = document.getElementsByClassName("popup-close")[0];
-	link.onclick = function() {
-		popup.style.display = "block";
-	}
-	close.onclick = function() {
-		popup.style.display = "none";
-	}
-</script>
-
+	<script>
+		//
+	</script>
 </body>
 </html>
