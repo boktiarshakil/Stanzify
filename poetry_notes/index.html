@@ -55,6 +55,8 @@
 			border-radius: 8px;
 			margin-bottom: 20px;
 		}
+		
+		
 
 		button:hover {
 			background-color: #3e8e41;
@@ -90,12 +92,21 @@
 			content: "➤";
 			margin-right: 10px;
 		}
+		
+		.dark-mode .popup {
+	background-color: #333;
+	color: white;
+	border-color: white;
+}
+
 
 	</style>
 </head>
 <body>
 
 <button onclick="window.location.href='../index.html'">Back to Home</button>
+	
+<button id="dark-mode-toggle" onclick="toggleDarkMode()">Dark Mode</button>	
 
 <h1>Poem Title</h1>
 
