@@ -31,80 +31,6 @@
 			font-size: 45px;
 			margin: 0 auto;
 			text-align: center;
-			color: black;
-			background-color: white;
-		}
-
-		.dark-mode body {
-			color: white;
-			background-color: black;
-		}
-
-		h1 {
-			font-size: 80px;
-			margin-bottom: 50px;
-		}
-
-		button {
-			font-size: 40px;
-			padding: 10px 20px;
-			border: none;
-			background-color: #4CAF50;
-			color: white;
-			cursor: pointer;
-			border-radius: 8px;
-			margin-bottom: 20px;
-		}
-		
-		
-
-		button:hover {
-			background-color: #3e8e41;
-		}
-
-		a {
-			color: #4CAF50;
-		}
-
-		a:hover {
-			color: #3e8e41;
-		}
-
-		.popup p, .popup li {
-			color: black;
-		}
-
-<head>
-	<title>Study Notes</title>
-	<style>
-		.popup {
-			display: none;
-			position: fixed;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			width: 80%;
-			height: 80%;
-			background-color: white;
-			border: 2px solid black;
-			padding: 20px;
-			overflow-y: auto;
-		}
-		
-		.popup h2 {
-			margin-top: 0;
-		}
-		
-		.popup-close {
-			float: right;
-			cursor: pointer;
-		}
-		
-		body {
-			padding: 20px;
-			font-size: 45px;
-			margin: 0 auto;
-			text-align: center;
 			background-color: white;
 			color: black;
 		}
@@ -158,40 +84,38 @@
 		li {
 			margin-bottom: 5px;
 		}
-
-    .dark-mode .popup {
-      background-color: black;
-      color: white;
-    }
+        
+        .dark-mode .popup {
+	background-color: black;
+}
 	</style>
 </head>
 <body>
 
 <button onclick="window.location.href='../index.html'">Back to Home</button>
-	
-<button id="dark-mode-toggle" onclick="toggleDarkMode()">Dark Mode</button>	
+<button onclick="toggleDarkMode()">Toggle Dark Mode</button>
 
 <h1>Poem Title</h1>
 
-<p>Line of poem <a href="#popup">🔍</a></p>
+<p>Line of poem <a href="#popup">📖</a></p>
 
 <div id="popup" class="popup">
 	<h2>Line of poem</h2>
 	<p>Word notes:</p>
 	<ul>
-		<li>Rough: harsh, violent.</li>
-		<li>Winds: moving air, often with considerable force.</li>
-		<li>Shake: to move or cause to move with short, quick movements.</li>
+		<li>Rough: </li>
+		<li>Winds: .</li>
+		<li>Shake:</li>
 		<li>Darling: cherished, beloved.</li>
 		<li>Buds: small, undeveloped flowers or leaves.</li>
-		<li>May: the month of May, typically associated with spring and new growth.</li>
+		<li>May:.</li>
 	</ul>
 	<p>Paraphrase:</p>
-	<p>Strong winds can damage the beloved buds of May.</p>
+	<p>Strong</p>
 	<p>Explanation:</p>
-	<p>This line uses a metaphor to suggest that the beauty of a summer's day is fragile and fleeting. The "darling buds of May" represent the delicate and beloved parts of nature that are vulnerable to damage from the "rough winds" of life. The tone is somewhat melancholy, as the speaker is acknowledging the transience of beauty and the inevitability of change. The use of the word "darling" also suggests a sense of affection and tenderness, which adds to the emotional impact of the metaphor.</p>
+	<p>metaphor.</p>
 	<p>Historical/cultural context:</p>
-	<p>William Shakespeare's sonnet 18 was published in 1609 and is one of his most famous sonnets. It is also known as "Shall I compare thee to a summer's day?" and is addressed to a young man, praising his beauty and comparing him to the beauty of a summer's day. The sonnet form was popular in Shakespeare's time and often used to explore themes of love, beauty, and mortality.</p>
+	<p>and mortality.</p>
 	<p><span class="popup-close">[Close]</span></p>
 </div>
 
@@ -205,26 +129,21 @@
 	close.onclick = function() {
 		popup.style.display = "none";
 	}
-	
 	function toggleDarkMode() {
-		var body = document.body;
-		body.classList.toggle("dark-mode");
-		var button = document.getElementById("dark-mode-toggle");
-		if (button.innerHTML === "Dark Mode") {
-			button.innerHTML = "Light Mode";
-			// set the background color of popup to black when dark mode is toggled on
-			popup.style.backgroundColor = "black";
-		} else {
-			button.innerHTML = "Dark Mode";
-			// set the background color of popup to white when dark mode is toggled off
-			popup.style.backgroundColor = "white";
-		}
-	}
+  var body = document.body;
+  body.classList.toggle("dark-mode");
+  var button = document.getElementById("dark-mode-toggle");
+  if (button.innerHTML === "Dark Mode") {
+    button.innerHTML = "Light Mode";
+  } else {
+    button.innerHTML = "Dark Mode";
+  }
+}
 
-	var darkModeToggle = document.getElementById("dark-mode-toggle");
-	darkModeToggle.addEventListener("click", toggleDarkMode);
+var darkModeToggle = document.getElementById("dark-mode-toggle");
+darkModeToggle.addEventListener("click", toggleDarkMode);
+
 </script>
-
 
 </body>
 </html>
