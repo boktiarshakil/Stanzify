@@ -8,6 +8,7 @@
 		body {
 			font-family: Arial, sans-serif;
 			margin: 0;
+            text-align: center;
 		}
 
 		header {
@@ -81,6 +82,41 @@
 			text-decoration: none;
 			cursor: pointer;
 		}
+        
+        /* Add responsive styles */
+@media screen and (max-width: 767px) {
+	header {
+		padding: 10px;
+	}
+	h1 {
+		font-size: 28px;
+	}
+	.modal-content {
+		margin: 30% auto;
+		padding: 10px;
+	}
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+	h1 {
+		font-size: 36px;
+	}
+	.modal-content {
+		margin: 20% auto;
+		padding: 15px;
+	}
+}
+
+@media screen and (min-width: 992px) {
+	h1 {
+		font-size: 48px;
+	}
+	.modal-content {
+		margin: 15% auto;
+		padding: 20px;
+	}
+}
+
 
 	</style>
 </head>
