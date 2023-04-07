@@ -86,8 +86,24 @@
 		}
         
         .dark-mode .popup {
-	background-color: black;
-}
+			background-color: black;
+		}
+        
+        @media screen and (max-width: 768px) {
+			body {
+				font-size: 30px;
+			}
+			
+			h1 {
+				font-size: 40px;
+			}
+			
+			.popup {
+				width: 90%;
+				height: 90%;
+				padding: 10px;
+			}
+		}
 	</style>
 </head>
 <body>
