@@ -1,43 +1,44 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Sonnet 18</title>
-	<link rel="stylesheet" href="style.css">
-</head>
-<body>
-	<div class="container">
-		<header>
-			<h1>Sonnet 18</h1>
-			<button onclick="location.href='index.html'">Back to Homepage</button>
-		</header>
-		<main>
-			<p>
-				Shall I compare thee to a summer's day?<br>
-				Thou art more lovely and more temperate:<br>
-				Rough winds do shake the darling buds of May,<br>
-				And summer's lease hath all too short a date:<br>
-				Sometime too hot the eye of heaven shines,<br>
-				And often is his gold complexion dimm'd;<br>
-				And every fair from fair sometime declines,<br>
-				By chance, or nature's changing course untrimm'd;<br>
-				But thy eternal summer shall not fade<br>
-				Nor lose possession of that fair thou owest;<br>
-				Nor shall Death brag thou wander'st in his shade,<br>
-				When in eternal lines to time thou growest:<br>
-				So long as men can breathe or eyes can see,<br>
-				So long lives this, and this gives life to thee.<br>
-			</p>
-			<div class="explanation">
-				<p>This sonnet by William Shakespeare is one of the most famous love poems in the English language. In it, the speaker compares the beauty of his beloved to a summer's day, but argues that his beloved is even more beautiful and constant than the fleeting summer. The final couplet asserts that as long as there are people alive to read and appreciate poetry, the poem will ensure that the beauty of the speaker's beloved will live on forever.</p>
-			</div>
-			<button onclick="toggleExplanation()">Explanation</button>
-		</main>
-	</div>
-	<script>
-		function toggleExplanation() {
-			var explanation = document.querySelector('.explanation');
-			explanation.classList.toggle('show');
-		}
-	</script>
-</body>
+  <head>
+    <meta charset="UTF-8">
+    <title>Sonnet 18</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header>
+      <h1>Sonnet 18</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <div class="poem">
+        <pre>
+          Shall I compare thee to a summer's day?
+          Thou art more lovely and more temperate:
+          Rough winds do shake the darling buds of May,
+          And summer's lease hath all too short a date:
+          Sometime too hot the eye of heaven shines,
+          And often is his gold complexion dimmed;
+          And every fair from fair sometime declines,
+          By chance or nature's changing course untrimmed;
+          But thy eternal summer shall not fade
+          Nor lose possession of that fair thou owest;
+          Nor shall Death brag thou wanderest in his shade,
+          When in eternal lines to time thou growest:
+          So long as men can breathe or eyes can see,
+          So long lives this, and this gives life to thee.
+        </pre>
+      </div>
+      <button onclick="goBack()">Go Back</button>
+    </main>
+    <script>
+      function goBack() {
+        window.history.back();
+      }
+    </script>
+  </body>
 </html>
