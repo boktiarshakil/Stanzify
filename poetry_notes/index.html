@@ -2,7 +2,6 @@
 <html>
 <head>
 	<title>Study Notes</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<style>
 		.popup {
 			display: none;
@@ -28,16 +27,69 @@
 		}
 		
 		body {
-			padding: 15px;
-			font-size: 1.5em;
+			padding: 20px;
+			font-size: 45px;
 			margin: 0 auto;
 			text-align: center;
+			background-color: white;
+			color: black;
+		}
+
+		.dark-mode {
+			background-color: black;
+			color: white;
+		}
+
+		button {
+			background-color: gray;
+			color: white;
+			border: none;
+			padding: 15px 20px;
+			border-radius: 5px;
+			font-size: 30px;
+			cursor: pointer;
+		}
+
+		button:hover {
+			background-color: darkgray;
+		}
+
+		a {
+			color: blue;
+			text-decoration: none;
+		}
+
+		a:hover {
+			text-decoration: underline;
+		}
+
+		h1 {
+			font-size: 60px;
+			margin-top: 0;
+		}
+
+		p {
+			margin-bottom: 10px;
+			line-height: 1.5;
+		}
+
+		ul {
+			text-align: left;
+			list-style-position: inside;
+			margin-left: 0;
+			padding-left: 0;
+			margin-bottom: 10px;
+		}
+
+		li {
+			margin-bottom: 5px;
 		}
 	</style>
 </head>
 <body>
 
 <button onclick="window.location.href='../index.html'">Back to Home</button>
+<button onclick="toggleDarkMode()">Toggle Dark Mode</button>
 
 <h1>Poem Title</h1>
 
