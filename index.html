@@ -1,52 +1,39 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Stanzify</title>
-  </head>
-  <body>
-    <h1>Stanzify</h1>
-    <form id="search-form">
-      <label for="search-input">Search by title:</label>
-      <input type="text" id="search-input" name="search-input">
-      <button type="submit">Search</button>
-    </form>
-    <div id="search-results"></div>
-    <script>
-      const searchForm = document.getElementById("search-form");
-      const searchInput = document.getElementById("search-input");
-      const searchResults = document.getElementById("search-results");
-      
-      searchForm.addEventListener("submit", event => {
-        event.preventDefault();
-        searchResults.innerHTML = "";
-        const query = searchInput.value.toLowerCase().trim();
-        if (query === "") return;
-        const xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function() {
-          if (this.readyState === XMLHttpRequest.DONE) {
-            if (this.status === 200) {
-              const parser = new DOMParser();
-              const htmlDoc = parser.parseFromString(this.responseText, "text/html");
-              const notes = htmlDoc.querySelectorAll(".note");
-              let resultsHtml = "";
-              notes.forEach(note => {
-                const title = note.querySelector("h2").textContent.toLowerCase();
-                if (title.includes(query)) {
-                  resultsHtml += note.outerHTML;
-                }
-              });
-              if (resultsHtml === "") {
-                resultsHtml = "<p>No results found.</p>";
-              }
-              searchResults.innerHTML = resultsHtml;
-            } else {
-              searchResults.innerHTML = "<p>Search failed.</p>";
-            }
-          }
-        };
-        xhr.open("GET", "poetry_notes/");
-        xhr.send();
-      });
-    </script>
-  </body>
+<head>
+	<title>Stanzify - Home Page</title>
+</head>
+<body>
+
+	<h1>Welcome to Stanzify!</h1>
+	<p>Search for poetry notes:</p>
+	<form>
+		<label for="search">Title:</label>
+		<input type="text" id="search" name="search"><br><br>
+		<input type="submit" value="Search">
+	</form>
+
+	<h2>Poetry Notes:</h2>
+	<ul>
+		<?php
+			$dir = 'poetry_notes';
+			$files = scandir($dir);
+			foreach($files as $file) {
+				if ($file !== '.' && $file !== '..') {
+					$title = get_title($dir . '/' . $file);
+					echo '<li><a href="' . $dir . '/' . $file . '">' . $title . '</a></li>';
+				}
+			}
+
+			function get_title($file_path) {
+				$file_contents = file_get_contents($file_path);
+				$start = strpos($file_contents, '<title>') + 7;
+				$end = strpos($file_contents, '</title>');
+				$title = substr($file_contents, $start, $end - $start);
+				return $title;
+			}
+		?>
+	</ul>
+
+</body>
 </html>
