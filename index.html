@@ -1,39 +1,123 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Stanzify - Home Page</title>
+	<title>Stanzify</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+		}
+
+		header {
+			background-color: #333;
+			color: white;
+			padding: 20px;
+			text-align: center;
+		}
+
+		h1 {
+			margin: 0;
+		}
+
+		.container {
+			padding: 20px;
+			max-width: 800px;
+			margin: auto;
+		}
+
+		input[type=text] {
+			padding: 10px;
+			width: 50%;
+			border-radius: 5px;
+			border: none;
+			margin-bottom: 20px;
+		}
+
+		ul {
+			list-style-type: none;
+			padding: 0;
+			margin: 0;
+		}
+
+		li a {
+			display: block;
+			padding: 10px;
+			background-color: #f2f2f2;
+			border-radius: 5px;
+			color: #333;
+			text-decoration: none;
+			margin-bottom: 10px;
+		}
+
+		li a:hover {
+			background-color: #ddd;
+		}
+
+		.modal {
+			display: none;
+			position: fixed;
+			z-index: 1;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			overflow: auto;
+			background-color: rgb(0,0,0);
+			background-color: rgba(0,0,0,0.4);
+		}
+
+		.modal-content {
+			background-color: #fefefe;
+			margin: 10% auto;
+			padding: 20px;
+			border: 1px solid #888;
+			width: 80%;
+		}
+
+		.close {
+			color: #aaa;
+			float: right;
+			font-size: 28px;
+			font-weight: bold;
+		}
+
+		.close:hover,
+		.close:focus {
+			color: black;
+			text-decoration: none;
+			cursor: pointer;
+		}
+
+	</style>
 </head>
 <body>
+	<header>
+		<h1>Stanzify</h1>
+		<p>Where poetry comes to life.</p>
+	</header>
 
-	<h1>Welcome to Stanzify!</h1>
-	<p>Search for poetry notes:</p>
-	<form>
-		<label for="search">Title:</label>
-		<input type="text" id="search" name="search"><br><br>
-		<input type="submit" value="Search">
-	</form>
+	<div class="container">
+		<form>
+			<input type="text" placeholder="Search for a poem..." id="search-input">
+		</form>
 
-	<h2>Poetry Notes:</h2>
-	<ul>
-		<?php
-			$dir = 'poetry_notes';
-			$files = scandir($dir);
-			foreach($files as $file) {
-				if ($file !== '.' && $file !== '..') {
-					$title = get_title($dir . '/' . $file);
-					echo '<li><a href="' . $dir . '/' . $file . '">' . $title . '</a></li>';
-				}
-			}
+		<ul id="poem-list">
+			<li><a href="poetry_notes/sonnet-18.html">Sonnet 18</a></li>
+			<li><a href="poetry_notes/the-road-not-taken.html">The Road Not Taken</a></li>
+			<li><a href="poetry_notes/ode-to-a-nightingale.html">Ode to a Nightingale</a></li>
+			<li><a href="poetry_notes/how-do-i-love-thee.html">How Do I Love Thee?</a></li>
+		</ul>
+	</div>
 
-			function get_title($file_path) {
-				$file_contents = file_get_contents($file_path);
-				$start = strpos($file_contents, '<title>') + 7;
-				$end = strpos($file_contents, '</title>');
-				$title = substr($file_contents, $start, $end - $start);
-				return $title;
-			}
-		?>
-	</ul>
+	<div id="myModal" class="modal">
+		<div class="modal-content">
+			<span class="close">&times;</span>
+			<h2 id="poem-title"></h2>
+			<p id="poem-content"></p>
+		</div>
+	</div>
 
-</body>
-</html>
+	<script>
+		//
