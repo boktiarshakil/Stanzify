@@ -1,114 +1,29 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Stanzify</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<style>
-		body {
-			font-family: Arial, sans-serif;
-			margin: 0;
-		}
+<div class="container">
+  <ul id="poem-list">
+  </ul>
+</div>
 
-		header {
-			background-color: #333;
-			color: white;
-			padding: 20px;
-			text-align: center;
-		}
+<script>
+  const folder = "poetry_notes"; // replace with your folder name
+  const poemList = document.getElementById("poem-list");
 
-		h1 {
-			margin: 0;
-		}
+  fetch(folder)
+    .then(response => response.text())
+    .then(text => {
+      const parser = new DOMParser();
+      const html = parser.parseFromString(text, "text/html");
+      const files = html.querySelectorAll("a");
 
-		.container {
-			padding: 20px;
-			max-width: 800px;
-			margin: auto;
-		}
-
-		ul {
-			list-style-type: none;
-			padding: 0;
-			margin: 0;
-		}
-
-		li a {
-			display: block;
-			padding: 10px;
-			background-color: #f2f2f2;
-			border-radius: 5px;
-			color: #333;
-			text-decoration: none;
-			margin-bottom: 10px;
-		}
-
-		li a:hover {
-			background-color: #ddd;
-		}
-
-		.modal {
-			display: none;
-			position: fixed;
-			z-index: 1;
-			left: 0;
-			top: 0;
-			width: 100%;
-			height: 100%;
-			overflow: auto;
-			background-color: rgb(0,0,0);
-			background-color: rgba(0,0,0,0.4);
-		}
-
-		.modal-content {
-			background-color: #fefefe;
-			margin: 10% auto;
-			padding: 20px;
-			border: 1px solid #888;
-			width: 80%;
-		}
-
-		.close {
-			color: #aaa;
-			float: right;
-			font-size: 28px;
-			font-weight: bold;
-		}
-
-		.close:hover,
-		.close:focus {
-			color: black;
-			text-decoration: none;
-			cursor: pointer;
-		}
-
-	</style>
-</head>
-<body>
-	<header>
-		<h1>Stanzify</h1>
-		<p>Where poetry comes to life.</p>
-	</header>
-
-	<div class="container">
-		<ul id="poem-list">
-			<li><a href="poetry_notes/sonnet-18.html">Sonnet 18</a></li>
-			<li><a href="poetry_notes/the-road-not-taken.html">The Road Not Taken</a></li>
-			<li><a href="poetry_notes/ode-to-a-nightingale.html">Ode to a Nightingale</a></li>
-			<li><a href="poetry_notes/how-do-i-love-thee.html">How Do I Love Thee?</a></li>
-		</ul>
-	</div>
-
-	<div id="myModal" class="modal">
-		<div class="modal-content">
-			<span class="close">&times;</span>
-			<h2 id="poem-title"></h2>
-			<p id="poem-content"></p>
-		</div>
-	</div>
-
-	<script>
-		//
-	</script>
-</body>
-</html>
+      files.forEach(file => {
+        if (file.href.endsWith(".html")) {
+          const li = document.createElement("li");
+          const a = document.createElement("a");
+          a.href = file.href;
+          a.textContent = file.textContent;
+          li.appendChild(a);
+          poemList.appendChild(li);
+        }
+      });
+    })
+    .catch(error => console.error(error));
+</script>
