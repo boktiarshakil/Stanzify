@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Study Notes</title>
+	<style>
+		.popup {
+			display: none;
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 80%;
+			height: 80%;
+			background-color: white;
+			border: 2px solid black;
+			padding: 20px;
+			overflow-y: auto;
+		}
+		
+		.popup h2 {
+			margin-top: 0;
+		}
+		
+		.popup-close {
+			float: right;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+
+<button onclick="window.location.href='../index.html'">Back to Home</button>
+
+<h1>Poem Title</h1>
+
+<p>Line of poem <a href="#popup">[Explanation]</a></p>
+
+<div id="popup" class="popup">
+	<h2>Line of poem</h2>
+	<p>Word notes:</p>
+	<ul>
+		<li>Rough: harsh, violent.</li>
+		<li>Winds: moving air, often with considerable force.</li>
+		<li>Shake: to move or cause to move with short, quick movements.</li>
+		<li>Darling: cherished, beloved.</li>
+		<li>Buds: small, undeveloped flowers or leaves.</li>
+		<li>May: the month of May, typically associated with spring and new growth.</li>
+	</ul>
+	<p>Paraphrase:</p>
+	<p>Strong winds can damage the beloved buds of May.</p>
+	<p>Explanation:</p>
+	<p>This line uses a metaphor to suggest that the beauty of a summer's day is fragile and fleeting. The "darling buds of May" represent the delicate and beloved parts of nature that are vulnerable to damage from the "rough winds" of life. The tone is somewhat melancholy, as the speaker is acknowledging the transience of beauty and the inevitability of change. The use of the word "darling" also suggests a sense of affection and tenderness, which adds to the emotional impact of the metaphor.</p>
+	<p>Historical/cultural context:</p>
+	<p>William Shakespeare's sonnet 18 was published in 1609 and is one of his most famous sonnets. It is also known as "Shall I compare thee to a summer's day?" and is addressed to a young man, praising his beauty and comparing him to the beauty of a summer's day. The sonnet form was popular in Shakespeare's time and often used to explore themes of love, beauty, and mortality.</p>
+	<p><span class="popup-close">[Close]</span></p>
+</div>
+
+<script>
+	var popup = document.getElementById("popup");
+	var link = document.getElementsByTagName("a")[0];
+	var close = document.getElementsByClassName("popup-close")[0];
+	link.onclick = function() {
+		popup.style.display = "block";
+	}
+	close.onclick = function() {
+		popup.style.display = "none";
+	}
+</script>
+
+</body>
+</html>
