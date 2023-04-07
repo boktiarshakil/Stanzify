@@ -1,110 +1,52 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>My Website</title>
-	<style>
-		/* styles for search box */
-		.search-box {
-			margin: 10px 0;
-			padding: 10px;
-			border: 1px solid #ccc;
-			border-radius: 5px;
-			background-color: #f1f1f1;
-		}
-		
-		/* styles for search input */
-		.search-input {
-			display: inline-block;
-			width: 80%;
-			border: none;
-			background-color: #f1f1f1;
-		}
-		
-		/* styles for search button */
-		.search-btn {
-			display: inline-block;
-			width: 18%;
-			background-color: #4CAF50;
-			color: white;
-			border: none;
-			border-radius: 5px;
-			cursor: pointer;
-		}
-		
-		/* styles for search results */
-		.search-results {
-			margin-top: 20px;
-		}
-		
-		/* styles for search result links */
-		.result-link {
-			display: block;
-			margin: 5px 0;
-			color: #337ab7;
-			text-decoration: none;
-		}
-		
-		/* styles for highlighted search terms */
-		.highlight {
-			background-color: yellow;
-			font-weight: bold;
-		}
-	</style>
-</head>
-<body>
-
-<h1>Welcome to my website</h1>
-
-<!-- search box -->
-<div class="search-box">
-	<form id="search-form">
-		<label for="search-input">Search:</label>
-		<input type="text" id="search-input" class="search-input" name="q">
-		<button type="submit" class="search-btn">Search</button>
-	</form>
-</div>
-
-<!-- search results container -->
-<div id="search-results" class="search-results"></div>
-
-<script>
-	var searchForm = document.getElementById("search-form");
-	var searchInput = document.getElementById("search-input");
-	var searchResults = document.getElementById("search-results");
-	
-	searchForm.addEventListener("submit", function(e) {
-		e.preventDefault();
-		
-		// clear previous search results
-		searchResults.innerHTML = "";
-		
-		// get search term
-		var searchTerm = searchInput.value.toLowerCase();
-		
-		// search for term in page content
-		var pageContent = document.documentElement.outerHTML.toLowerCase();
-		var searchRegex = new RegExp(searchTerm, "g");
-		var matches = pageContent.match(searchRegex);
-		
-		if (matches !== null) {
-			// display search results
-			var resultsText = matches.length + " matches found for '" + searchTerm + "'";
-			searchResults.innerHTML += "<p>" + resultsText + "</p>";
-			
-			// loop through matches and add them to results container
-			for (var i = 0; i < matches.length; i++) {
-				var match = matches[i];
-				var matchIndex = pageContent.indexOf(match);
-				var context = pageContent.substr(matchIndex - 20, 40);
-				var contextHtml = context.replace(new RegExp(searchTerm, "gi"), "<span class=\"highlight\">" + searchTerm + "</span>");
-				var resultHtml = "<a class=\"result-link\" href=\"#" + matchIndex + "\">" + contextHtml + "</a>";
-				searchResults.innerHTML += resultHtml;
-			}
-		} else {
-			searchResults.innerHTML += "<p>No matches found for '" + searchTerm + "'</p>";
-		}
-	});
-</script>
-
-</body>
+  <head>
+    <title>Stanzify</title>
+  </head>
+  <body>
+    <h1>Stanzify</h1>
+    <form id="search-form">
+      <label for="search-input">Search by title:</label>
+      <input type="text" id="search-input" name="search-input">
+      <button type="submit">Search</button>
+    </form>
+    <div id="search-results"></div>
+    <script>
+      const searchForm = document.getElementById("search-form");
+      const searchInput = document.getElementById("search-input");
+      const searchResults = document.getElementById("search-results");
+      
+      searchForm.addEventListener("submit", event => {
+        event.preventDefault();
+        searchResults.innerHTML = "";
+        const query = searchInput.value.toLowerCase().trim();
+        if (query === "") return;
+        const xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+          if (this.readyState === XMLHttpRequest.DONE) {
+            if (this.status === 200) {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(this.responseText, "text/html");
+              const notes = htmlDoc.querySelectorAll(".note");
+              let resultsHtml = "";
+              notes.forEach(note => {
+                const title = note.querySelector("h2").textContent.toLowerCase();
+                if (title.includes(query)) {
+                  resultsHtml += note.outerHTML;
+                }
+              });
+              if (resultsHtml === "") {
+                resultsHtml = "<p>No results found.</p>";
+              }
+              searchResults.innerHTML = resultsHtml;
+            } else {
+              searchResults.innerHTML = "<p>Search failed.</p>";
+            }
+          }
+        };
+        xhr.open("GET", "poetry_notes/");
+        xhr.send();
+      });
+    </script>
+  </body>
 </html>
