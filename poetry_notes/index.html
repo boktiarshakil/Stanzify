@@ -125,6 +125,20 @@
 	close.onclick = function() {
 		popup.style.display = "none";
 	}
+	function toggleDarkMode() {
+  var body = document.body;
+  body.classList.toggle("dark-mode");
+  var button = document.getElementById("dark-mode-toggle");
+  if (button.innerHTML === "Dark Mode") {
+    button.innerHTML = "Light Mode";
+  } else {
+    button.innerHTML = "Dark Mode";
+  }
+}
+
+var darkModeToggle = document.getElementById("dark-mode-toggle");
+darkModeToggle.addEventListener("click", toggleDarkMode);
+
 </script>
 
 </body>
