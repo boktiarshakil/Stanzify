@@ -1,0 +1,79 @@
+<html>
+<head>
+  <style>
+    /* Define a dark theme and a light theme */
+    .dark-theme {
+      background-color: #222;
+      color: white;
+    }
+
+    .light-theme {
+      background-color: white;
+      color: black;
+    }
+
+    /* Define a button to toggle the theme */
+    #theme-button {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    /* Define a popup to explain the code */
+    .popup {
+      display: none;
+      position: absolute;
+      border: 1px solid black;
+      background-color: white;
+      padding: 10px;
+    }
+
+    /* Show the popup when the emoji is clicked */
+    .emoji:focus + .popup {
+      display: block;
+    }
+  </style>
+</head>
+<body class="light-theme">
+  <div id="theme-button">Toggle dark mode</div>
+  <h1>Example page</h1>
+  <p>This is an example page that has a dark mode button and text alongside explanation icons or emojis. When you click on an emoji, a popup will appear and explain the line of code where the emoji is located.</p>
+  <pre><code>&lt;html&gt;
+&lt;head&gt;
+  &lt;style&gt;👉&lt;/style&gt; &lt;!-- This is where we define the styles for the page --&gt;
+&lt;/head&gt;
+&lt;body class="light-theme"&gt;👉 &lt;!-- This is where we set the initial theme for the page --&gt;
+  &lt;div id="theme-button"&gt;Toggle dark mode&lt;/div&gt;👉 &lt;!-- This is where we create a button to toggle the theme --&gt;
+  &lt;h1&gt;Example page&lt;/h1&gt;
+  &lt;p&gt;This is an example page that has a dark mode button and text alongside explanation icons or emojis. When you click on an emoji, a popup will appear and explain the line of code where the emoji is located.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+  <!-- Add emojis and popups after each line of code -->
+  <span class="emoji" tabindex="0">👉</span><div class="popup">This is where we define the styles for the page.</div>
+  <span class="emoji" tabindex="0">👉</span><div class="popup">This is where we set the initial theme for the page.</div>
+  <span class="emoji" tabindex="0">👉</span><div class="popup">This is where we create a button to toggle the theme.</div>
+  <!-- Add a script to toggle the theme when the button is clicked -->
+  <script>
+    // Get the button element
+    var button = document.getElementById("theme-button");
+    // Get the body element
+    var body = document.body;
+    // Add a click event listener to the button
+    button.addEventListener("click", function() {
+      // Check if the body has the light-theme class
+      if (body.classList.contains("light-theme")) {
+        // Remove the light-theme class and add the dark-theme class
+        body.classList.remove("light-theme");
+        body.classList.add("dark-theme");
+      } else {
+        // Remove the dark-theme class and add the light-theme class
+        body.classList.remove("dark-theme");
+        body.classList.add("light-theme");
+      }
+    });
+  </script>
+</body>
+</html>
