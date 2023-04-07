@@ -1,123 +1,110 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Stanzify</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>My Website</title>
 	<style>
-		body {
-			font-family: Arial, sans-serif;
-			margin: 0;
-		}
-
-		header {
-			background-color: #333;
-			color: white;
-			padding: 20px;
-			text-align: center;
-		}
-
-		h1 {
-			margin: 0;
-		}
-
-		.container {
-			padding: 20px;
-			max-width: 800px;
-			margin: auto;
-		}
-
-		input[type=text] {
+		/* styles for search box */
+		.search-box {
+			margin: 10px 0;
 			padding: 10px;
-			width: 50%;
+			border: 1px solid #ccc;
 			border-radius: 5px;
-			border: none;
-			margin-bottom: 20px;
+			background-color: #f1f1f1;
 		}
-
-		ul {
-			list-style-type: none;
-			padding: 0;
-			margin: 0;
-		}
-
-		li a {
-			display: block;
-			padding: 10px;
-			background-color: #f2f2f2;
-			border-radius: 5px;
-			color: #333;
-			text-decoration: none;
-			margin-bottom: 10px;
-		}
-
-		li a:hover {
-			background-color: #ddd;
-		}
-
-		.modal {
-			display: none;
-			position: fixed;
-			z-index: 1;
-			left: 0;
-			top: 0;
-			width: 100%;
-			height: 100%;
-			overflow: auto;
-			background-color: rgb(0,0,0);
-			background-color: rgba(0,0,0,0.4);
-		}
-
-		.modal-content {
-			background-color: #fefefe;
-			margin: 10% auto;
-			padding: 20px;
-			border: 1px solid #888;
+		
+		/* styles for search input */
+		.search-input {
+			display: inline-block;
 			width: 80%;
+			border: none;
+			background-color: #f1f1f1;
 		}
-
-		.close {
-			color: #aaa;
-			float: right;
-			font-size: 28px;
-			font-weight: bold;
-		}
-
-		.close:hover,
-		.close:focus {
-			color: black;
-			text-decoration: none;
+		
+		/* styles for search button */
+		.search-btn {
+			display: inline-block;
+			width: 18%;
+			background-color: #4CAF50;
+			color: white;
+			border: none;
+			border-radius: 5px;
 			cursor: pointer;
 		}
-
+		
+		/* styles for search results */
+		.search-results {
+			margin-top: 20px;
+		}
+		
+		/* styles for search result links */
+		.result-link {
+			display: block;
+			margin: 5px 0;
+			color: #337ab7;
+			text-decoration: none;
+		}
+		
+		/* styles for highlighted search terms */
+		.highlight {
+			background-color: yellow;
+			font-weight: bold;
+		}
 	</style>
 </head>
 <body>
-	<header>
-		<h1>Stanzify</h1>
-		<p>Where poetry comes to life.</p>
-	</header>
 
-	<div class="container">
-		<form>
-			<input type="text" placeholder="Search for a poem..." id="search-input">
-		</form>
+<h1>Welcome to my website</h1>
 
-		<ul id="poem-list">
-			<li><a href="poetry_notes/sonnet-18.html">Sonnet 18</a></li>
-			<li><a href="poetry_notes/the-road-not-taken.html">The Road Not Taken</a></li>
-			<li><a href="poetry_notes/ode-to-a-nightingale.html">Ode to a Nightingale</a></li>
-			<li><a href="poetry_notes/how-do-i-love-thee.html">How Do I Love Thee?</a></li>
-		</ul>
-	</div>
+<!-- search box -->
+<div class="search-box">
+	<form id="search-form">
+		<label for="search-input">Search:</label>
+		<input type="text" id="search-input" class="search-input" name="q">
+		<button type="submit" class="search-btn">Search</button>
+	</form>
+</div>
 
-	<div id="myModal" class="modal">
-		<div class="modal-content">
-			<span class="close">&times;</span>
-			<h2 id="poem-title"></h2>
-			<p id="poem-content"></p>
-		</div>
-	</div>
+<!-- search results container -->
+<div id="search-results" class="search-results"></div>
 
-	<script>
-		//
+<script>
+	var searchForm = document.getElementById("search-form");
+	var searchInput = document.getElementById("search-input");
+	var searchResults = document.getElementById("search-results");
+	
+	searchForm.addEventListener("submit", function(e) {
+		e.preventDefault();
+		
+		// clear previous search results
+		searchResults.innerHTML = "";
+		
+		// get search term
+		var searchTerm = searchInput.value.toLowerCase();
+		
+		// search for term in page content
+		var pageContent = document.documentElement.outerHTML.toLowerCase();
+		var searchRegex = new RegExp(searchTerm, "g");
+		var matches = pageContent.match(searchRegex);
+		
+		if (matches !== null) {
+			// display search results
+			var resultsText = matches.length + " matches found for '" + searchTerm + "'";
+			searchResults.innerHTML += "<p>" + resultsText + "</p>";
+			
+			// loop through matches and add them to results container
+			for (var i = 0; i < matches.length; i++) {
+				var match = matches[i];
+				var matchIndex = pageContent.indexOf(match);
+				var context = pageContent.substr(matchIndex - 20, 40);
+				var contextHtml = context.replace(new RegExp(searchTerm, "gi"), "<span class=\"highlight\">" + searchTerm + "</span>");
+				var resultHtml = "<a class=\"result-link\" href=\"#" + matchIndex + "\">" + contextHtml + "</a>";
+				searchResults.innerHTML += resultHtml;
+			}
+		} else {
+			searchResults.innerHTML += "<p>No matches found for '" + searchTerm + "'</p>";
+		}
+	});
+</script>
+
+</body>
+</html>
