@@ -74,32 +74,95 @@
 			color: black;
 		}
 
-		.dark-mode .popup p, .dark-mode .popup li {
+<head>
+	<title>Study Notes</title>
+	<style>
+		.popup {
+			display: none;
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 80%;
+			height: 80%;
+			background-color: white;
+			border: 2px solid black;
+			padding: 20px;
+			overflow-y: auto;
+		}
+		
+		.popup h2 {
+			margin-top: 0;
+		}
+		
+		.popup-close {
+			float: right;
+			cursor: pointer;
+		}
+		
+		body {
+			padding: 20px;
+			font-size: 45px;
+			margin: 0 auto;
+			text-align: center;
+			background-color: white;
+			color: black;
+		}
+
+		.dark-mode {
+			background-color: black;
 			color: white;
 		}
 
-		.popup ul {
-			list-style-type: none;
-			padding: 0;
-			margin: 0;
+		button {
+			background-color: gray;
+			color: white;
+			border: none;
+			padding: 15px 20px;
+			border-radius: 5px;
+			font-size: 30px;
+			cursor: pointer;
 		}
 
-		.popup ul li {
+		button:hover {
+			background-color: darkgray;
+		}
+
+		a {
+			color: blue;
+			text-decoration: none;
+		}
+
+		a:hover {
+			text-decoration: underline;
+		}
+
+		h1 {
+			font-size: 60px;
+			margin-top: 0;
+		}
+
+		p {
+			margin-bottom: 10px;
+			line-height: 1.5;
+		}
+
+		ul {
+			text-align: left;
+			list-style-position: inside;
+			margin-left: 0;
+			padding-left: 0;
 			margin-bottom: 10px;
 		}
 
-		.popup ul li:before {
-			content: "➤";
-			margin-right: 10px;
+		li {
+			margin-bottom: 5px;
 		}
-		
-		.dark-mode .popup {
-	background-color: #333;
-	color: white;
-	border-color: white;
-}
 
-
+    .dark-mode .popup {
+      background-color: black;
+      color: white;
+    }
 	</style>
 </head>
 <body>
@@ -142,21 +205,26 @@
 	close.onclick = function() {
 		popup.style.display = "none";
 	}
+	
 	function toggleDarkMode() {
-  var body = document.body;
-  body.classList.toggle("dark-mode");
-  var button = document.getElementById("dark-mode-toggle");
-  if (button.innerHTML === "Dark Mode") {
-    button.innerHTML = "Light Mode";
-  } else {
-    button.innerHTML = "Dark Mode";
-  }
-}
+		var body = document.body;
+		body.classList.toggle("dark-mode");
+		var button = document.getElementById("dark-mode-toggle");
+		if (button.innerHTML === "Dark Mode") {
+			button.innerHTML = "Light Mode";
+			// set the background color of popup to black when dark mode is toggled on
+			popup.style.backgroundColor = "black";
+		} else {
+			button.innerHTML = "Dark Mode";
+			// set the background color of popup to white when dark mode is toggled off
+			popup.style.backgroundColor = "white";
+		}
+	}
 
-var darkModeToggle = document.getElementById("dark-mode-toggle");
-darkModeToggle.addEventListener("click", toggleDarkMode);
-
+	var darkModeToggle = document.getElementById("dark-mode-toggle");
+	darkModeToggle.addEventListener("click", toggleDarkMode);
 </script>
+
 
 </body>
 </html>
