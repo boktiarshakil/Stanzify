@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -124,6 +125,17 @@
 	<header>
 		<h1>Stanzify</h1>
 		<p>Where poetry comes to life.</p>
+    <button onclick="findText()" style="background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;">Find Text</button>
+
 	</header>
 
 	<div class="container">
@@ -153,6 +165,17 @@
 	</div>
 
 	<script>
+
+function findText() {
+  var searchTerm = prompt("Enter the text to search:");
+  if (searchTerm) {
+    var found = window.find(searchTerm);
+    if (!found) {
+      alert("Text not found!");
+    }
+  }
+}
+
 		//
 	</script>
 </body>
