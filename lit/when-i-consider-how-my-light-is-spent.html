@@ -1,0 +1,464 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Shall I compare thee to a summer's day?
+Poem by William Shakespeare</title>
+	<style>
+		.popup {
+			display: none;
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 80%;
+			height: 80%;
+			background-color: white;
+			border: 2px solid black;
+			padding: 20px;
+			overflow-y: auto;
+		}
+		
+		.popup h2 {
+			margin-top: 0;
+		}
+		
+		.popup-close {
+			float: right;
+			cursor: pointer;
+		}
+		
+		body {
+			padding: 20px;
+			font-size: 45px;
+			margin: 0 auto;
+			text-align: center;
+			background-color: white;
+			color: black;
+			font-family: Helvetica, sans-serif;
+		}
+
+		.dark-mode {
+			background-color: black;
+			color: white;
+		}
+
+		button {
+			background-color: gray;
+			color: white;
+			border: none;
+			padding: 15px 20px;
+			border-radius: 5px;
+			font-size: 30px;
+			cursor: pointer;
+		}
+
+		button:hover {
+			background-color: darkgray;
+		}
+
+		a {
+			color: blue;
+			text-decoration: none;
+		}
+
+		a:hover {
+			text-decoration: underline;
+		}
+
+		h1 {
+			font-size: 60px;
+			margin-top: 0;
+		}
+
+		p {
+			margin-bottom: 10px;
+			line-height: 1.5;
+		}
+
+		ul {
+			text-align: left;
+			list-style-position: inside;
+			margin-left: 0;
+			padding-left: 0;
+			margin-bottom: 10px;
+		}
+
+		li {
+			margin-bottom: 5px;
+		}
+        
+        .dark-mode .popup {
+			background-color: black;
+		}
+        
+        @media screen and (max-width: 768px) {
+			body {
+				font-size: 30px;
+			}
+			
+			h1 {
+				font-size: 40px;
+			}
+			
+			.popup {
+				width: 90%;
+				height: 90%;
+				padding: 10px;
+			}
+		}
+	</style>
+</head>
+<body>
+
+<button onclick="window.location.href='../index.html'">Back to Stanzify</button>
+<button onclick="toggleDarkMode()">Toggle Dark Mode</button>
+
+<h1>When I Consider How My Light is Spent" Poem by John Milton</h1>
+
+  <p>When I consider how my light is spent
+    <a href="#popup1" class="popup-link">Explain me</a>
+</p>
+<div id="popup1" class="popup">
+    <h2>When I consider how my light is spent</h2>
+    <p>Word notes:</p>
+    <ul>
+        <li>Consider: contemplate, think about</li>
+        <li>Light: metaphor for talent, ability, or life</li>
+        <li>Spent: used up, exhausted</li>
+    </ul>
+    <p>Paraphrase:</p>
+    <p>When I think about how I have used up my talents or life</p>
+    <p>Explanation:</p>
+    <p>The speaker is reflecting on the use of their abilities or life and questioning whether they have used them wisely.</p>
+    <p>Historical/cultural context:</p>
+    <p>The poem was written by John Milton, an English poet, in the 17th century. It reflects on his blindness and his
+        struggle to find purpose in his life.</p>
+    <p><span class="popup-close">[Close]</span></p>
+</div>
+
+  <p>Ere half my days in this dark world and wide,
+<a href="#popup2" class="popup-link">Explain me</a>
+
+  </p>
+  <div id="popup2" class="popup">
+  <h2>Ere half my days in this dark world and wide</h2>
+  <p>Word notes:</p>
+  <ul>
+    <li>Ere: before</li>
+    <li>Half my days: halfway through my life</li>
+    <li>Dark world and wide: a metaphor for a difficult and expansive world</li>
+  </ul>
+  <p>Paraphrase:</p>
+  <p>Before I reach the halfway point of my life in this difficult and expansive world</p>
+  <p>Explanation:</p>
+  <p>The speaker is lamenting the fact that they have already used up a significant portion of their life and they have not
+    achieved much in a world that they perceive to be difficult and wide-ranging.</p>
+  <p>Historical/cultural context:</p>
+  <p>The poem was written during a time of political and religious turmoil in England. It reflects on the author's personal
+    struggles as well as the wider issues of his time.</p>
+  <p><span class="popup-close">[Close]</span></p>
+</div>
+
+  <p>And that one talent which is death to hide,
+<a href="#popup3" class="popup-link">Explain me</a>
+
+  </p>
+  <div id="popup3" class="popup">
+  <h2>And that one talent which is death to hide</h2>
+  <p>Word notes:</p>
+  <ul>
+    <li>Talent: a skill or ability</li>
+    <li>Death to hide: a metaphor for burying or wasting one's talent</li>
+  </ul>
+  <p>Paraphrase:</p>
+  <p>And the one talent that I have, which would be a waste to bury or waste</p>
+  <p>Explanation:</p>
+  <p>The speaker is referring to their own talents and abilities and suggesting that it would be a waste to hide or waste
+    them. The phrase "death to hide" suggests that burying one's talent is as bad as dying with it unused.</p>
+  <p>Historical/cultural context:</p>
+  <p>The poem was written during the 17th century, a time when the concept of personal talent and individuality was
+    becoming increasingly important in English society.</p>
+  <p><span class="popup-close">[Close]</span></p>
+</div>
+
+  <p>Lodged with me useless, though my soul more bent
+<a href="#popup4" class="popup-link">Explain me</a>
+
+  </p>
+  <div id="popup4" class="popup">
+  <h2>Lodged with me useless, though my soul more bent</h2>
+  <p>Word notes:</p>
+  <ul>
+    <li>Lodged: dwelling within</li>
+    <li>Useless: unproductive or wasted</li>
+    <li>Bent: inclined or determined</li>
+  </ul>
+  <p>Paraphrase:</p>
+  <p>Even though my soul is more determined, my talent remains within me, unproductive and wasted.</p>
+  <p>Explanation:</p>
+  <p>The speaker is expressing frustration that their talent remains unexpressed despite their strong desire to use it. The
+    phrase "lodged with me useless" suggests that the talent is trapped within the speaker and cannot be put to use.</p>
+  <p>Historical/cultural context:</p>
+  <p>The poem reflects on the author's own personal struggles with his blindness and the loss of his talent as a writer and
+    intellectual during a time of political and religious upheaval in England.</p>
+  <p><span class="popup-close">[Close]</span></p>
+</div>
+
+  <p>To serve therewith my Maker, and present
+<a href="#popup5" class="popup-link">Explain me</a>
+
+  </p>
+  <div id="popup5" class="popup">
+  <h2>To serve therewith my Maker, and present</h2>
+  <p>Word notes:</p>
+  <ul>
+    <li>Therewith: with that talent</li>
+    <li>Maker: a reference to God</li>
+    <li>Present: offer, give</li>
+  </ul>
+  <p>Paraphrase:</p>
+  <p>So that I can use this talent to serve my Maker and offer it to Him.</p>
+  <p>Explanation:</p>
+  <p>The speaker expresses a desire to use his talent to serve God and present it as an offering to Him. This is a common theme
+    in Christian literature, where serving God is seen as the highest purpose in life.</p>
+  <p>Historical/cultural context:</p>
+  <p>The poem was written during the 17th century, a time when religion played a central role in English society and culture.
+    The author's personal struggles with blindness and loss of talent can be seen in the context of this larger cultural
+    framework.</p>
+  <p><span class="popup-close">[Close]</span></p>
+</div>
+
+  <p>My true account, lest he returning chide;
+<a href="#popup6" class="popup-link">Explain me</a>
+
+  </p>
+  <div id="popup6" class="popup">
+  <h2>My true account, lest he returning chide;</h2>
+  <p>Word notes:</p>
+  <ul>
+    <li>True account: an accurate record of his actions</li>
+    <li>Chide: scold or rebuke</li>
+  </ul>
+  <p>Paraphrase:</p>
+  <p>I want to offer an accurate record of my actions to God, lest He scold me when He returns.</p>
+  <p>Explanation:</p>
+  <p>The speaker wants to use his talent to serve God and present it as an offering to Him so that he can give an honest
+    account of his life and actions. The phrase "lest he returning chide" suggests that the speaker wants to avoid being
+    rebuked by God for failing to use his talent to serve Him.</p>
+  <p>Historical/cultural context:</p>
+  <p>The poem reflects the author's deep religious faith and his desire to use his talents to serve God. The fear of divine
+    punishment for failing to live up to one's religious obligations was a common theme in Christian literature at the time.</p>
+  <p><span class="popup-close">[Close]</span></p>
+</div>
+
+  <p>"Doth God exact day-labour, light denied?"
+<a href="#popup7" class="popup-link">Explain me</a>
+
+  <div id="popup7" class="popup">
+  <h2>"Doth God exact day-labour, light denied?"</h2>
+  <p>Word notes:</p>
+  <ul>
+    <li>Doth: does</li>
+    <li>Exact: demand</li>
+    <li>Day-labour: hard work during the day</li>
+    <li>Light denied: a reference to the speaker's blindness</li>
+  </ul>
+  <p>Paraphrase:</p>
+  <p>Does God demand that I work hard during the day, even though I am blind?</p>
+  <p>Explanation:</p>
+  <p>The speaker is questioning whether God expects him to work hard during the day, despite his blindness. The phrase "light
+    denied" suggests that the speaker feels limited or handicapped in some way, and is questioning whether God would still
+    demand that he work as if he had full sight.</p>
+  <p>Historical/cultural context:</p>
+  <p>The poem reflects the author's personal struggles with blindness and his attempts to reconcile his physical limitations
+    with his religious beliefs. The question of whether God expects the same level of productivity from everyone, regardless
+    of their abilities, was a common theological debate at the time.</p>
+  <p><span class="popup-close">[Close]</span></p>
+</div>
+
+  <p>I fondly ask. But patience, to prevent
+<a href="#popup8" class="popup-link">Explain me</a>
+
+  </p>
+  <div id="popup8" class="popup">
+  <h2>I fondly ask. But patience, to prevent</h2>
+  <p>Word notes:</p>
+  <ul>
+    <li>Fondly: foolishly or with excessive affection</li>
+    <li>Patience: the ability to remain calm and composed in the face of difficulties</li>
+    <li>To prevent: to avoid or avert</li>
+  </ul>
+  <p>Paraphrase:</p>
+  <p>I foolishly ask this question. But I need to be patient and avoid becoming anxious or frustrated.</p>
+  <p>Explanation:</p>
+  <p>The speaker acknowledges that his previous question about whether God expects him to work hard despite his blindness was
+    a foolish one. However, he reminds himself to be patient and calm, and to avoid becoming anxious or frustrated about
+    his situation.</p>
+  <p>Historical/cultural context:</p>
+  <p>The poem reflects the author's struggles with blindness and his attempts to find meaning and purpose in his life despite
+    his physical limitations. The emphasis on patience and acceptance of one's circumstances was a common theme in Christian
+    literature at the time.</p>
+  <p><span class="popup-close">[Close]</span></p>
+</div>
+
+  <p>That murmur, soon replies, "God doth not need
+<a href="#popup9" class="popup-link">Explain me</a>
+
+  </p>
+  <div id="popup9" class="popup">
+  <h2>That murmur, soon replies, "God doth not need</h2>
+  <p>Word notes:</p>
+  <ul>
+    <li>Murmur: a low, continuous sound, often used to describe quiet or indistinct speech</li>
+    <li>Soon: quickly or immediately</li>
+    <li>Replies: responds</li>
+    <li>God doth not need: a reference to the idea that God is self-sufficient and does not require anything from humanity</li>
+  </ul>
+  <p>Paraphrase:</p>
+  <p>The quiet voice inside me quickly responds with the idea that God does not need anything from me.</p>
+  <p>Explanation:</p>
+  <p>The speaker describes a "murmur" or quiet voice inside himself that responds to his earlier question about whether God
+    expects him to work hard despite his blindness. The response is that God does not need anything from him, and is a
+    reflection of the idea that God is self-sufficient and does not require anything from humanity.</p>
+  <p>Historical/cultural context:</p>
+  <p>The poem reflects the author's struggles with blindness and his attempts to find meaning and purpose in his life despite
+    his physical limitations. The idea that God is self-sufficient and does not require anything from humanity was a common
+    theological belief at the time.</p>
+  <p><span class="popup-close">[Close]</span></p>
+</div>
+
+  <p>Either man's work or his own gifts; who best
+<a href="#popup10" class="popup-link">Explain me</a>
+
+  </p>
+  <div id="popup10" class="popup">
+  <h2>Either man's work or his own gifts; who best</h2>
+  <p>Word notes:</p>
+  <ul>
+    <li>Either: used to refer to two alternatives</li>
+    <li>Man's work: human effort or labor</li>
+    <li>His own gifts: natural talents or abilities</li>
+    <li>Who best: who performs the best or achieves the most</li>
+  </ul>
+  <p>Paraphrase:</p>
+  <p>Either through human effort or natural talents, who is able to achieve the most?</p>
+  <p>Explanation:</p>
+  <p>The speaker continues to contemplate his situation and whether he is able to make a meaningful contribution to the world
+    despite his blindness. He wonders whether it is through his own efforts or natural abilities that he can achieve the
+    most.</p>
+  <p>Historical/cultural context:</p>
+  <p>The poem reflects the author's struggles with blindness and his attempts to find meaning and purpose in his life despite
+    his physical limitations. The idea of striving to achieve one's potential through personal effort or natural gifts was a
+    common theme in Renaissance literature.</p>
+  <p><span class="popup-close">[Close]</span></p>
+</div>
+
+  <p>His state is kingly: thousands at his bidding speed,
+<a href="#popup11" class="popup-link">Explain me</a>
+
+  </p>
+  <div id="popup11" class="popup">
+  <h2>His state is kingly: thousands at his bidding speed</h2>
+  <p>Word notes:</p>
+  <ul>
+    <li>State: condition or situation</li>
+    <li>Kingly: royal or majestic</li>
+    <li>Thousands: many people or things</li>
+    <li>Bidding: command or request</li>
+    <li>Speed: move quickly or efficiently</li>
+  </ul>
+  <p>Paraphrase:</p>
+  <p>His condition is like that of a king: many people move quickly and efficiently in response to his commands.</p>
+  <p>Explanation:</p>
+  <p>The speaker describes a person who is able to exert great influence over others and command their actions with ease. The
+    use of the word "kingly" suggests a regal or majestic quality to this person's state or condition.</p>
+  <p>Historical/cultural context:</p>
+  <p>The poem reflects the author's struggles with blindness and his attempts to find meaning and purpose in his life despite
+    his physical limitations. The idea of power and influence was a common theme in Renaissance literature, especially in the
+    context of political and courtly life.</p>
+  <p><span class="popup-close">[Close]</span></p>
+</div>
+
+  <p>They also serve who only stand and wait."
+<a href="#popup12" class="popup-link">Explain me</a>
+
+  </p>
+  <div id="popup12" class="popup">
+  <h2>They also serve who only stand and wait.</h2>
+  <p>Word notes:</p>
+  <ul>
+    <li>Serve: help or assist</li>
+    <li>Stand: remain stationary or inactive</li>
+    <li>Wait: stay in one place for a period of time</li>
+  </ul>
+  <p>Paraphrase:</p>
+  <p>Even those who simply remain stationary and wait can still be of service.</p>
+  <p>Explanation:</p>
+  <p>The speaker suggests that service to others can take many forms, including waiting patiently and offering support or
+    encouragement to those who are active in the world. This idea is particularly meaningful in the context of the speaker's
+    blindness, which limits his ability to participate in traditional forms of service or activity.</p>
+  <p>Historical/cultural context:</p>
+  <p>The poem reflects the author's struggles with blindness and his attempts to find meaning and purpose in his life despite
+    his physical limitations. The idea that even those who are unable to participate fully in the world can still make a
+    meaningful contribution was an important theme in Renaissance literature and philosophy.</p>
+  <p><span class="popup-close">[Close]</span></p>
+</div>
+
+ 
+
+<script>
+
+// Get all the popup links
+const popupLinks = document.querySelectorAll('.popup-link');
+
+// Add click event listener to each popup link
+popupLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    // Prevent the default link behavior
+    e.preventDefault();
+
+    // Get the target popup ID from the link's href attribute
+    const popupId = this.getAttribute('href');
+
+    // Get the corresponding popup element
+    const popup = document.querySelector(popupId);
+
+    // Display the popup by changing its display style to "block"
+    popup.style.display = 'block';
+  });
+});
+
+// Get all the close buttons inside the popups
+const closeButtons = document.querySelectorAll('.popup-close');
+
+// Add click event listener to each close button
+closeButtons.forEach(button => {
+  button.addEventListener('click', function() {
+    // Get the corresponding popup element
+    const popup = this.closest('.popup');
+
+    // Hide the popup by changing its display style to "none"
+    popup.style.display = 'none';
+  });
+});
+
+
+	function toggleDarkMode() {
+  var body = document.body;
+  body.classList.toggle("dark-mode");
+  var button = document.getElementById("dark-mode-toggle");
+  if (button.innerHTML === "Dark Mode") {
+    button.innerHTML = "Light Mode";
+  } else {
+    button.innerHTML = "Dark Mode";
+  }
+}
+
+var darkModeToggle = document.getElementById("dark-mode-toggle");
+darkModeToggle.addEventListener("click", toggleDarkMode);
+
+</script>
+
+</body>
+</html>
