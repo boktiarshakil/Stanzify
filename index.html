@@ -1,172 +1,773 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Stanzify</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Study Notes</title>
 	<style>
+		.popup {
+			display: none;
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 80%;
+			height: 80%;
+			background-color: white;
+			border: 2px solid black;
+			padding: 20px;
+			overflow-y: auto;
+		}
+		
+		.popup h2 {
+			margin-top: 0;
+		}
+		
+		.popup-close {
+			float: right;
+			cursor: pointer;
+		}
+		
 		body {
+			padding: 20px;
+			font-size: 45px;
+			margin: 0 auto;
+			text-align: center;
+			background-color: white;
+			color: black;
 			font-family: Helvetica, sans-serif;
-			margin: 0;
-            text-align: center;
 		}
 
-		header {
-			background-color: #333;
+		.dark-mode {
+			background-color: black;
 			color: white;
-			padding: 20px;
-			text-align: center;
+		}
+
+		button {
+			background-color: gray;
+			color: white;
+			border: none;
+			padding: 15px 20px;
+			border-radius: 5px;
+			font-size: 30px;
+			cursor: pointer;
+		}
+
+		button:hover {
+			background-color: darkgray;
+		}
+
+		a {
+			color: blue;
+			text-decoration: none;
+		}
+
+		a:hover {
+			text-decoration: underline;
 		}
 
 		h1 {
-			margin: 0;
+			font-size: 60px;
+			margin-top: 0;
 		}
 
-		.container {
-			padding: 20px;
-			max-width: 800px;
-			margin: auto;
+		p {
+			margin-bottom: 10px;
+			line-height: 1.5;
 		}
 
 		ul {
-			list-style-type: none;
-			padding: 0;
-			margin: 0;
-		}
-
-		li a {
-			display: block;
-			padding: 10px;
-			background-color: #f2f2f2;
-			border-radius: 5px;
-			color: #333;
-			text-decoration: none;
+			text-align: left;
+			list-style-position: inside;
+			margin-left: 0;
+			padding-left: 0;
 			margin-bottom: 10px;
 		}
 
-		li a:hover {
-			background-color: #ddd;
-		}
-
-		.modal {
-			display: none;
-			position: fixed;
-			z-index: 1;
-			left: 0;
-			top: 0;
-			width: 100%;
-			height: 100%;
-			overflow: auto;
-			background-color: rgb(0,0,0);
-			background-color: rgba(0,0,0,0.4);
-		}
-
-		.modal-content {
-			background-color: #fefefe;
-			margin: 10% auto;
-			padding: 20px;
-			border: 1px solid #888;
-			width: 80%;
-		}
-
-		.close {
-			color: #aaa;
-			float: right;
-			font-size: 28px;
-			font-weight: bold;
-		}
-
-		.close:hover,
-		.close:focus {
-			color: black;
-			text-decoration: none;
-			cursor: pointer;
+		li {
+			margin-bottom: 5px;
 		}
         
-        /* Add responsive styles */
-@media screen and (max-width: 767px) {
-	header {
-		padding: 10px;
-	}
-	h1 {
-		font-size: 28px;
-	}
-	.modal-content {
-		margin: 30% auto;
-		padding: 10px;
-	}
-}
-
-@media screen and (min-width: 768px) and (max-width: 991px) {
-	h1 {
-		font-size: 36px;
-	}
-	.modal-content {
-		margin: 20% auto;
-		padding: 15px;
-	}
-}
-
-@media screen and (min-width: 992px) {
-	h1 {
-		font-size: 48px;
-	}
-	.modal-content {
-		margin: 15% auto;
-		padding: 20px;
-	}
-}
-
-
+        .dark-mode .popup {
+			background-color: black;
+		}
+        
+        @media screen and (max-width: 768px) {
+			body {
+				font-size: 30px;
+			}
+			
+			h1 {
+				font-size: 40px;
+			}
+			
+			.popup {
+				width: 90%;
+				height: 90%;
+				padding: 10px;
+			}
+		}
 	</style>
 </head>
 <body>
-	<header>
-		<h1>Stanzify</h1>
-		<p>Where poetry comes to life.</p>
-    <button onclick="findText()" style="background-color: #4CAF50; /* Green */
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;">Find Text</button>
 
-	</header>
+<button onclick="window.location.href='../index.html'">Back to Stanzify</button>
+<button onclick="toggleDarkMode()">Toggle Dark Mode</button>
 
-	<div class="container">
-		<ul id="poem-list">
-			<li><a href="lit/index.html">Poem is coming!</a></li>
-			<li><a href="lit/index.html">Poem is coming!</a></li>
-			<li><a href="lit/index.html">Poem is coming!</a></li>
-			<li><a href="lit/index.html">Poem is coming!</a></li>
-		</ul>
-	</div>
+<h1>Shall I compare thee to a summer's day?
+Poem by William Shakespeare</h1>
 
-	<div id="myModal" class="modal">
-		<div class="modal-content">
-			<span class="close">&times;</span>
-			<h2 id="poem-title"></h2>
-			<p id="poem-content"></p>
-		</div>
-	</div>
+  <p>Shall I compare thee to a summer's day?
+    <a href="#popup1">📖
+    </a>
+  </p>
+  <div id="popup1" class="popup">
+    <h2>Shall I compare thee to a summer's day?
+    </h2>
+    <p>Word notes:
+    </p>
+    <ul>
+      <li>Shall: should.
+      </li>
+      <li>Compare: liken, equate.
+      </li>
+      <li>Thee: you (singular).
+      </li>
+      <li>Summer's day: metaphor for youth, beauty, and warmth.
+      </li>
+    </ul>
+    <p>Paraphrase:
+    </p>
+    <p>Should I compare you to a beautiful summer day?
+    </p>
+    <p>Explanation:
+    </p>
+    <p>The speaker is contemplating whether or not to compare the person they are addressing to a summer's day, which is
+      traditionally associated with beauty and warmth.
+    </p>
+    <p>Historical/cultural context:
+    </p>
+    <p>The speaker is expressing admiration for the person they are addressing, using the conventions of courtly love
+      poetry popular in Shakespeare's time.
+    </p>
+    <p>
+      <span class="popup-close">[Close]
+      </span>
+    </p>
+  </div>
+  <p>Thou art more lovely and more temperate:
+    <a href="#popup2">📖
+    </a>
+  </p>
+  <div id="popup2" class="popup">
+    <h2>Thou art more lovely and more temperate:
+    </h2>
+    <p>Word notes:
+    </p>
+    <ul>
+      <li>Thou: you (singular).
+      </li>
+      <li>Art: are.
+      </li>
+      <li>Lovely: beautiful, attractive.
+      </li>
+      <li>Temperate: moderate, mild.
+      </li>
+    </ul>
+    <p>Paraphrase:
+    </p>
+    <p>You are more beautiful and moderate than a summer's day.
+    </p>
+    <p>Explanation:
+    </p>
+    <p>The speaker is continuing the comparison to a summer's day, but stating that the person they are addressing is
+      even more beautiful and moderate in temperament.
+    </p>
+    <p>Historical/cultural context:
+    </p>
+    <p>The speaker is using the conventions of courtly love poetry to flatter and praise the person they are addressing.
+    </p>
+    <p>
+      <span class="popup-close">[Close]
+      </span>
+    </p>
+  </div>
+  <p>Rough winds do shake the darling buds of May,
+    <a href="#popup3">📖
+    </a>
+  </p>
+  <div id="popup3" class="popup">
+    <h2>Rough winds do shake the darlingbuds of May:
+    </h2>
+    <p>Word notes:
+    </p>
+    <ul>
+      <li>Rough: harsh, violent.
+      </li>
+      <li>Winds: moving air.
+      </li>
+      <li>Shake: disturb, unsettle.
+      </li>
+      <li>Darling: cherished, beloved.
+      </li>
+      <li>Buds: small, undeveloped flowers or leaves.
+      </li>
+      <li>May: springtime, a symbol of new life and growth.
+      </li>
+    </ul>
+    <p>Paraphrase:
+    </p>
+    <p>Harsh winds can disturb the small, beloved flowers of spring.
+    </p>
+    <p>Explanation:
+    </p>
+    <p>The speaker is using a metaphor to describe the fragility of youth and beauty, and how it can be disrupted by
+      external forces like the weather.
+    </p>
+    <p>Historical/cultural context:
+    </p>
+    <p>The speaker is acknowledging the transience of beauty and youth, a common theme in Renaissance poetry.
+    </p>
+    <p>
+      <span class="popup-close">[Close]
+      </span>
+    </p>
+  </div>
+  <p>And summer's lease hath all too short a date:
+    <a href="#popup4">📖
+    </a>
+  </p>
+  <div id="popup4" class="popup">
+    <h2>And summer's lease hath all too short a date:
+    </h2>
+    <p>Word notes:
+    </p>
+    <ul>
+      <li>Summer's lease: metaphor for the brief duration of summer.
+      </li>
+      <li>All too short: too brief, too fleeting.
+      </li>
+      <li>Date: period of time, duration.
+      </li>
+    </ul>
+    <p>Paraphrase:
+    </p>
+    <p>Summer is too short and passes by too quickly.
+    </p>
+    <p>Explanation:
+    </p>
+    <p>The speaker is lamenting the brevity of summer, which is traditionally associated with warmth, beauty, and
+      abundance.
+    </p>
+    <p>Historical/cultural context:
+    </p>
+    <p>The speaker is acknowledging the passing of time and the inevitability of change, a common theme in Renaissance
+      poetry.
+    </p>
+    <p>
+      <span class="popup-close">[Close]
+      </span>
+    </p>
+  </div>
+  <p>Sometime too hot the eye of heaven shines,
+    <a href="#popup5">📖
+    </a>
+  </p>
+  <div id="popup5" class="popup">
+    <h2>Sometime too hot the eye of heaven shines:
+    </h2>
+    <p>Word notes:
+    </p>
+    <ul>
+      <li>Sometime: sometimes, occasionally.
+      </li>
+      <li>Hot: intense, scorching.
+      </li>
+      <li>Eye of heaven: metaphor for the sun.
+      </li>
+    </ul>
+    <p>Paraphrase:
+    </p>
+    <p>Sometimes the sun shines too intensely.
+    </p>
+    <p>Explanation:
+    </p>
+    <p>The speaker is acknowledging the discomfort that can come with the heat of summer, which can be too intense and
+      oppressive at times.
+    </p>
+    <p>Historical/cultural context:
+    </p>
+    <p>The speaker is using the conventions of courtly love poetry to describe the beauty of the person they are
+      addressing, while also acknowledging the imperfections of nature.
+    </p>
+    <p>
+      <span class="popup-close">[Close]
+      </span>
+    </p>
+  </div>
+  <p>And often is his gold complexion dimmed;
+    <a href="#popup6">📖
+    </a>
+  </p>
+  <div id="popup6" class="popup"> <h2>And often is his gold complexion dimmed:
+    </h2>
+    <p>Word notes:
+    </p>
+    <ul>
+      <li>Gold complexion: metaphor for the sun's appearance.
+      </li>
+      <li>Dimmed: less bright, obscured.
+      </li>
+    </ul>
+    <p>Paraphrase:
+    </p>
+    <p>The sun's bright appearance is often obscured.
+    </p>
+    <p>Explanation:
+    </p>
+    <p>The speaker is continuing to describe the imperfections of nature, including the fact that the sun is not always
+      visible or shining brightly.
+    </p>
+    <p>Historical/cultural context:
+    </p>
+    <p>The speaker is using the conventions of courtly love poetry to describe the beauty of the person they are
+      addressing, while also acknowledging the imperfections of nature.
+    </p>
+    <p>
+      <span class="popup-close">[Close]
+      </span>
+    </p>
+  </div>
+  <p>And every fair from fair sometime declines,
+    <a href="#popup7">📖
+    </a>
+  </p>
+  <div id="popup7" class="popup">
+    <h2>And every fair from fair sometime declines:
+    </h2>
+    <p>Word notes:
+    </p>
+    <ul>
+      <li>Fair: beauty, goodness, perfection.
+      </li>
+      <li>Declines: fades away, diminishes.
+      </li>
+    </ul>
+    <p>Paraphrase:
+    </p>
+    <p>All beauty fades away eventually.
+    </p>
+    <p>Explanation:
+    </p>
+    <p>The speaker is acknowledging the transience of all things, including beauty, which inevitably fades and declines
+      over time.
+    </p>
+    <p>Historical/cultural context:
+    </p>
+    <p>The speaker is drawing on the conventions of courtly love poetry, which often depicted the beloved as a paragon
+      of perfection and beauty. However, the speaker is also acknowledging the reality of mortality and the passing of
+      time.
+    </p>
+    <p>
+      <span class="popup-close">[Close]
+      </span>
+    </p>
+  </div>
+  <p>By chance, or nature's changing course untrimmed;
+    <a href="#popup8">📖
+    </a>
+  </p>
+  <div id="popup8" class="popup">
+    <h2>By chance, or nature's changing course untrimmed:
+    </h2>
+    <p>Word notes:
+    </p>
+    <ul>
+      <li>Chance: random, unpredictable events.
+      </li>
+      <li>Nature's changing course untrimmed: the unpredictable changes of nature.
+      </li>
+      <li>Untrimmed: uncontrolled, not guided by human hands.
+      </li>
+    </ul>
+    <p>Paraphrase:
+    </p>
+    <p>Beauty fades away due to random chance or the uncontrollable changes of nature.
+    </p>
+    <p>Explanation:
+    </p>
+    <p>The speaker is further exploring the idea of transience and how beauty can be lost due to factors outside of
+      human control.
+    </p>
+    <p>Historical/cultural context:
+    </p>
+    <p>The speaker is acknowledging the reality of mortality and the unpredictability of life, which was a common theme
+      in Renaissance poetry.
+    </p>
+    <p>
+      <span class="popup-close">[Close]
+      </span>
+    </p>
+  </div>
+  <p>But thy eternal summer shall not fade
+    <a href="#popup9">📖
+    </a>
+  </p>
+  <div id="popup9" class="popup">
+    <h2>But thy eternal summer shall not fade:
+    </h2>
+    <p>Word notes:
+    </p>
+    <ul>
+      <li>Eternal summer: metaphor for the beloved's beauty.
+      </li><li>Shall not fade: will not diminish or disappear.
+      </li>
+    </ul>
+    <p>Paraphrase:
+    </p>
+    <p>The beauty of the beloved will never fade away.
+    </p>
+    <p>Explanation:
+    </p>
+    <p>The speaker is contrasting the transience of earthly beauty with the enduring nature of the beloved's beauty. The
+      use of the metaphor "eternal summer" reinforces the idea that the beloved's beauty is timeless and unchanging.
+    </p>
+    <p>Historical/cultural context:
+    </p>
+    <p>The speaker is drawing on the conventions of courtly love poetry, which often portrayed the beloved as a paragon
+      of perfection and beauty. However, the speaker is also elevating the beloved's beauty to a higher, more spiritual
+      plane by suggesting that it is eternal.
+    </p>
+    <p>
+      <span class="popup-close">[Close]
+      </span>
+    </p>
+  </div>
+  <p>Nor lose possession of that fair thou owest;
+    <a href="#popup10">📖
+    </a>
+  </p>
+  <div id="popup10" class="popup">
+    <h2>Nor lose possession of that fair thou owest:
+    </h2>
+    <p>Word notes:
+    </p>
+    <ul>
+      <li>Lose possession: be deprived of, lose.
+      </li>
+      <li>Fair thou owest: the beauty that you possess and owe to the world.
+      </li>
+    </ul>
+    <p>Paraphrase:
+    </p>
+    <p>You will never lose the beauty that you possess and owe to the world.
+    </p>
+    <p>Explanation:
+    </p>
+    <p>The speaker is emphasizing the enduring nature of the beloved's beauty and suggesting that it is a gift that they
+      owe to the world.
+    </p>
+    <p>Historical/cultural context:
+    </p>
+    <p>The speaker is drawing on the conventions of courtly love poetry, which often depicted the beloved as a source of
+      inspiration and beauty for the poet and the world at large.
+    </p>
+    <p>
+      <span class="popup-close">[Close]
+      </span>
+    </p>
+  </div>
+  <p>Nor shall Death brag thou wander'st in his shade,
+    <a href="#popup11">📖
+    </a>
+  </p>
+  <div id="popup11" class="popup">
+    <h2>Nor shall Death brag thou wander'st in his shade:
+    </h2>
+    <p>Word notes:
+    </p>
+    <ul>
+      <li>Death: personification of death, used as a metaphor.
+      </li>
+      <li>Shade: metaphor for the realm of death.
+      </li>
+      <li>Brag: boast, show off.
+      </li>
+      <li>Wander'st: wander, roam.
+      </li>
+    </ul>
+    <p>Paraphrase:
+    </p>
+    <p>Even in death, you will not be forgotten or overshadowed.
+    </p>
+    <p>Explanation:
+    </p>
+    <p>The speaker is suggesting that the beloved's beauty will be so enduring that even death will not be able to
+      diminish it. By using the metaphor of "shade," the speaker is also emphasizing the idea that death is a shadowy,
+      insubstantial realm that cannot contain or diminish the beloved's beauty.
+    </p>
+    <p>Historical/cultural context:
+    </p>
+    <p>The speaker is drawing on the conventions of courtly love poetry, which often portrayed the beloved as a source
+      of spiritual and emotional salvation for the poet. The idea of eternal beauty and the transcendence of death was a
+      common theme in Renaissance poetry and art.
+    </p>
+    <p>
+      <span class="popup-close">[
+        Close]
+      </span>
+    </p>
+  </div>
+  <p>When in eternal lines to time thou growest:
+    <a href="#popup12">📖
+    </a>
+  </p>
+  <div id="popup12" class="popup">
+    <h2>When in eternal lines to time thou growest:
+    </h2>
+    <p>Word notes:
+    </p>
+    <ul>
+      <li>Eternal lines: the poem that the speaker is writing.
+      </li>
+      <li>Growest: become.
+      </li>
+    </ul>
+    <p>Paraphrase:
+    </p>
+    <p>When this poem is read in the future, you will still be alive in it.
+    </p>
+    <p>Explanation:
+    </p>
+    <p>The speaker is suggesting that the beloved's beauty will live on through the poem that he is writing, which will
+      be read by future generations. By using the metaphor of "eternal lines," the speaker is emphasizing the idea that
+      the poem will endure over time and preserve the beloved's beauty for all to see.
+    </p>
+    <p>Historical/cultural context:
+    </p>
+    <p>The sonnet form was a popular vehicle for courtly love poetry in the Renaissance, and many poets used it to
+      immortalize their beloveds. Shakespeare is drawing on this tradition while also innovating within it by using
+      natural imagery and a more conversational tone.
+    </p>
+    <p>
+      <span class="popup-close">[Close]
+      </span>
+    </p>
+  </div>
+  <p>So long as men can breathe or eyes can see,
+    <a href="#popup13">📖
+    </a>
+  </p>
+  <div id="popup13" class="popup">
+    <h2>So long as men can breathe or eyes can see:
+    </h2>
+    <p>Word notes:
+    </p>
+    <ul>
+      <li>So long as: as long as.
+      </li>
+      <li>Men can breathe or eyes can see: metaphor for the continuity of human existence and perception.
+      </li>
+    </ul>
+    <p>Paraphrase:
+    </p>
+    <p>As long as human beings exist and can perceive beauty, this poem will keep your memory alive.
+    </p>
+    <p>Explanation:
+    </p>
+    <p>The speaker is suggesting that the beloved's beauty will be remembered and celebrated as long as human beings
+      continue to exist and appreciate beauty. By using the metaphor of "breathing" and "seeing," the speaker is
+      emphasizing the idea that the beloved's beauty is intimately connected to the vitality of human life.
+    </p>
+    <p>Historical/cultural context:
+    </p>
+    <p>The idea of immortalizing oneself or one's beloved through poetry was a common theme in Renaissance literature.
+      Shakespeare is drawing on this tradition while also elevating it with his own poetic language and imagery.
+    </p>
+    <p>
+      <span class="popup-close">[Close]
+      </span>
+    </p>
+  </div>
+  <p>So long lives this, and this gives life to thee.
+    <a href="#popup14">📖
+    </a>
+  </p>
+  <div id="popup14" class="popup">
+    <h2>So long lives this, and this gives life to thee:
+    </h2>
+    <p>Word notes:
+    </p>
+    <ul>
+      <li>This: the poem that the speaker is writing.
+      </li>
+      <li>Gives life to thee: preserves your memory and beauty for future generations.
+      </li>
+    </ul>
+    <p>Paraphrase:
+    </p>
+    <p>This poem will keep your memory and beauty alive for future generations.
+    </p>
+    <p>Explanation:
+    </p>
+    <p>The speaker is concluding the poem
+      by reaffirming the idea that the beloved's beauty will be preserved through the poem that he has written. By using
+      the phrase "so long lives this," the speaker is emphasizing the idea that the poem will endure over time and keep
+      the beloved's memory alive. The final line, "and this gives life to thee," reinforces the idea that the poem is
+      not just a static object but an active force that brings the beloved's beauty to life for future generations to
+      appreciate.
+    </p>
+    <p>Historical/cultural context:
+    </p>
+    <p>The idea of poetry as a means of preserving one's memory and beauty was a common theme in Renaissance literature,
+      and Shakespeare is drawing on this tradition while also adding his own poetic language and imagery to create a
+      timeless and universal work of art.
+    </p>
+    <p>
+      <span class="popup-close">[Close]
+      </span>
+    </p>
+  </div>
 
-	<script>
+<script>
+	var popup1 = document.getElementById("popup1");
+var popup2 = document.getElementById("popup2");
+var popup3 = document.getElementById("popup3");
+var popup4 = document.getElementById("popup4");
+var popup5 = document.getElementById("popup5");
+var popup6 = document.getElementById("popup6");
+var popup7 = document.getElementById("popup7");
+var popup8 = document.getElementById("popup8");
+var popup9 = document.getElementById("popup9");
+var popup10 = document.getElementById("popup10");
+var popup11 = document.getElementById("popup11");
+var popup12 = document.getElementById("popup12");
+var popup13 = document.getElementById("popup13");
+var popup14 = document.getElementById("popup14");
+var popup15 = document.getElementById("popup15");
+var popup16 = document.getElementById("popup16");
+var popup17 = document.getElementById("popup17");
+var popup18 = document.getElementById("popup18");
+	var popup19 = document.getElementById("popup19");
+var popup20 = document.getElementById("popup20");
+var popup21 = document.getElementById("popup21");
+var popup22 = document.getElementById("popup22");
+var popup23 = document.getElementById("popup23");
+var popup24 = document.getElementById("popup24");
+var popup25 = document.getElementById("popup25");
+var popup26 = document.getElementById("popup26");
+var popup27 = document.getElementById("popup27");
+var popup28 = document.getElementById("popup28");
+var popup29 = document.getElementById("popup29");
+var popup30 = document.getElementById("popup30");
+var popup31 = document.getElementById("popup31");
+var popup32 = document.getElementById("popup32");
+var popup33 = document.getElementById("popup33");
+var popup34 = document.getElementById("popup34");
+var popup35 = document.getElementById("popup35");
+var popup36 = document.getElementById("popup36");
+var popup37 = document.getElementById("popup37");
+var popup38 = document.getElementById("popup38");
+var popup39 = document.getElementById("popup39");
+var popup40 = document.getElementById("popup40");
 
-function findText() {
-  var searchTerm = prompt("Enter the text to search:");
-  if (searchTerm) {
-    var found = window.find(searchTerm);
-    if (!found) {
-      alert("Text not found!");
-    }
+var link1 = document.getElementsByTagName("a")[0];
+var link2 = document.getElementsByTagName("a")[1];
+var link3 = document.getElementsByTagName("a")[2];
+var link4 = document.getElementsByTagName("a")[3];
+var link5 = document.getElementsByTagName("a")[4];
+var link6 = document.getElementsByTagName("a")[5];
+var link7 = document.getElementsByTagName("a")[6];
+var link8 = document.getElementsByTagName("a")[7];
+var link9 = document.getElementsByTagName("a")[8];
+var link10 = document.getElementsByTagName("a")[9];
+var link11 = document.getElementsByTagName("a")[10];
+var link12 = document.getElementsByTagName("a")[11];
+var link13 = document.getElementsByTagName("a")[12];
+var link14 = document.getElementsByTagName("a")[13];
+var link15 = document.getElementsByTagName("a")[14];
+var link16 = document.getElementsByTagName("a")[15];
+var link17 = document.getElementsByTagName("a")[16];
+var link18 = document.getElementsByTagName("a")[17];
+var link19 = document.getElementsByTagName("a")[18];
+var link20 = document.getElementsByTagName("a")[19];
+var link21 = document.getElementsByTagName("a")[20];
+var link22 = document.getElementsByTagName("a")[21];
+var link23 = document.getElementsByTagName("a")[22];
+var link24 = document.getElementsByTagName("a")[23];
+var link25 = document.getElementsByTagName("a")[24];
+var link26 = document.getElementsByTagName("a")[25];
+var link27 = document.getElementsByTagName("a")[26];
+var link28 = document.getElementsByTagName("a")[27];
+var link29 = document.getElementsByTagName("a")[28];
+var link30 = document.getElementsByTagName("a")[29];
+var link31 = document.getElementsByTagName("a")[30];
+var link32 = document.getElementsByTagName("a")[31];
+var link33 = document.getElementsByTagName("a")[32];
+var link34 = document.getElementsByTagName("a")[33];
+var link35 = document.getElementsByTagName("a")[34];
+var link36 = document.getElementsByTagName("a")[35];
+var link37 = document.getElementsByTagName("a")[36];
+var link38 = document.getElementsByTagName("a")[37];
+var link39 = document.getElementsByTagName("a")[38];
+var link40 = document.getElementsByTagName("a")[39];
+
+var close1 = document.getElementsByClassName("popup-close")[0];
+var close2 = document.getElementsByClassName("popup-close")[1];
+var close3 = document.getElementsByClassName("popup-close")[2];
+var close4 = document.getElementsByClassName("popup-close")[3];
+var close5 = document.getElementsByClassName("popup-close")[4];
+var close6 = document.getElementsByClassName("popup-close")[5];
+var close7 = document.getElementsByClassName("popup-close")[6];
+var close8 = document.getElementsByClassName("popup-close")[7];
+var close9 = document.getElementsByClassName("popup-close")[8];
+var close10 = document.getElementsByClassName("popup-close")[9];
+var close11 = document.getElementsByClassName("popup-close")[10];
+var close12 = document.getElementsByClassName("popup-close")[11];
+var close13 = document.getElementsByClassName("popup-close")[12];
+var close14 = document.getElementsByClassName("popup-close")[13];
+var close15 = document.getElementsByClassName("popup-close")[14];
+var close16 = document.getElementsByClassName("popup-close")[15];
+var close17 = document.getElementsByClassName("popup-close")[16];
+var close18 = document.getElementsByClassName("popup-close")[17];
+var close19 = document.getElementsByClassName("popup-close")[18];
+var close20 = document.getElementsByClassName("popup-close")[19];
+var close21 = document.getElementsByClassName("popup-close")[20];
+var close22 = document.getElementsByClassName("popup-close")[21];
+var close23 = document.getElementsByClassName("popup-close")[22];
+var close24 = document.getElementsByClassName("popup-close")[23];
+var close25 = document.getElementsByClassName("popup-close")[24];
+var close26 = document.getElementsByClassName("popup-close")[25];
+var close27 = document.getElementsByClassName("popup-close")[26];
+var close28 = document.getElementsByClassName("popup-close")[27];
+var close29 = document.getElementsByClassName("popup-close")[28];
+var close30 = document.getElementsByClassName("popup-close")[29];
+var close31 = document.getElementsByClassName("popup-close")[30];
+var close32 = document.getElementsByClassName("popup-close")[31];
+var close33 = document.getElementsByClassName("popup-close")[32];
+var close34 = document.getElementsByClassName("popup-close")[33];
+var close35 = document.getElementsByClassName("popup-close")[34];
+var close36 = document.getElementsByClassName("popup-close")[35];
+var close37 = document.getElementsByClassName("popup-close")[36];
+var close38 = document.getElementsByClassName("popup-close")[37];
+var close39 = document.getElementsByClassName("popup-close")[38];
+var close40 = document.getElementsByClassName("popup-close")[39];
+
+
+<-- Before add the code  -->
+	function toggleDarkMode() {
+  var body = document.body;
+  body.classList.toggle("dark-mode");
+  var button = document.getElementById("dark-mode-toggle");
+  if (button.innerHTML === "Dark Mode") {
+    button.innerHTML = "Light Mode";
+  } else {
+    button.innerHTML = "Dark Mode";
   }
 }
 
-		//
-	</script>
+var darkModeToggle = document.getElementById("dark-mode-toggle");
+darkModeToggle.addEventListener("click", toggleDarkMode);
+
+</script>
+
 </body>
 </html>
