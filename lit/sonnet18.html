@@ -678,6 +678,18 @@ closeButtons.forEach(button => {
 
 var darkModeToggle = document.getElementById("dark-mode-toggle");
 darkModeToggle.addEventListener("click", toggleDarkMode);
+	
+// Block copying
+document.oncopy = function() {
+  return false;
+};
+
+// Block dev tools
+document.addEventListener("contextmenu", function(e) {
+  e.preventDefault();
+  alert("Dev tools are blocked.");
+});
+
 
 </script>
 
